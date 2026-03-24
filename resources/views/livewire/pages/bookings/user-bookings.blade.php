@@ -229,7 +229,7 @@
                                     <tr class="hover:bg-slate-50/50 transition-colors">
                                         <td class="px-10 py-6">
                                             <p class="font-bold text-[#203044] text-base">{{ $history->service->name }}</p>
-                                            <p class="text-xs text-slate-400 mt-0.5">Completed</p>
+                                            <p class="text-xs text-slate-400 mt-0.5">{{$history->status}}</p>
                                         </td>
                                         <td class="px-10 py-6 text-slate-500 font-medium">{{ $history->start_time->format('M d, Y') }}</td>
                                         <td class="px-10 py-6">
