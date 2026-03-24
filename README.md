@@ -1,132 +1,58 @@
-# Project Overview
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-"SimplyBook" is a web-based appointment scheduling platform designed for service-based businesses (e.g., Barbers, Dentists, Consultants). It allows customers to browse services, view real-time availability, and book appointments, while providing administrators with a dashboard to manage employees, services, and schedules.
-System Architecture (MVC Pattern)
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-    Model: Represents the database tables (User, Appointment, Service).
+## About Laravel
 
-    View: The UI. We will use Blade Templates (standard Laravel) and Livewire for dynamic components (like the calendar).
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-    Controller: Handles incoming HTTP requests (AppointmentController).
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-    Service Layer: Contains the complex logic (e.g., AvailabilityService calculates free slots). This is the "Java" influence.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-# Database Design
-Entity Relationship Diagram
-Schema Definition
+## Learning Laravel
 
-1. users Table
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-    Purpose: Stores authentication details for both customers and admins.
+In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-    Columns:
+You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
-        id (PK, BigInt)
+## Agentic Development
 
-        name (String)
+Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
-        email (String, Unique)
+```bash
+composer require laravel/boost --dev
 
-        password (String, Hashed)
+php artisan boost:install
+```
 
-        role (Enum: 'admin', 'employee', 'customer')
+Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
-2. services Table
+## Contributing
 
-    Purpose: Defines what the business sells.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-    Columns:
+## Code of Conduct
 
-        id (PK)
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-        name (String) - e.g., "Haircut"
+## Security Vulnerabilities
 
-        duration (Integer) - Minutes (e.g., 30, 60)
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-        price (Decimal)
+## License
 
-3. schedules Table (The Logic Booster)
-
-    Purpose: Defines when an employee works.
-
-    Columns:
-
-        id (PK)
-
-        user_id (FK -> users)
-
-        day_of_week (TinyInt) - 0 (Sunday) to 6 (Saturday)
-
-        start_time (Time) - e.g., '09:00:00'
-
-        end_time (Time) - e.g., '17:00:00'
-
-4. appointments Table (The Transactional Table)
-
-    Purpose: Records the actual booking.
-
-    Columns:
-
-        id (PK)
-
-        user_id (FK -> users) - The Customer
-
-        service_id (FK -> services)
-
-        employee_id (FK -> users) - The Provider
-
-        start_time (DateTime) - e.g., '2023-10-25 14:00:00'
-
-        end_time (DateTime) - Calculated via Service Duration
-
-        status (Enum: 'pending', 'confirmed', 'canceled')
-
-# User Roles & Use Cases
-
-Actor: Customer
-
-    Browse Services: View list of services and prices.
-
-    Check Availability: Select a date and see available time slots.
-
-    Book Appointment: Secure a slot (requires login).
-
-    Manage Bookings: View upcoming appointments or cancel them.
-
-Actor: Admin / Employee
-
-    Manage Services: CRUD (Create, Read, Update, Delete) services.
-
-    Manage Schedule: Set working hours (e.g., "I don't work Mondays").
-
-    View Calendar: A master view of all bookings.
-
-    Cancel/Block: Admin can cancel a user's booking if needed.
-
-# Key Algorithms
-Algorithm: Slot Availability Calculation
-
-Problem: A customer wants to book a 30-minute haircut on Tuesday.
-Logic:
-
-    Fetch Schedule: Get the employee's working hours for Tuesday (e.g., 09:00 - 17:00).
-
-    Fetch Existing Bookings: Get all confirmed appointments for that employee on that date.
-
-    Generate Slots: Break the day into 30-minute chunks.
-
-    Filter: Remove any chunk that overlaps with an existing booking.
-
-    Return: A JSON array of valid start times (e.g., ['09:00', '09:30', '11:00']).
-
-# Technology Stack
-
-    Backend Framework: Laravel 10/11.
-
-    Database: PostgreSQL / MySQL.
-
-    Admin Panel: Filament PHP.
-
-    Frontend Interactivity: Laravel Livewire.
-
-    Styling: Tailwind CSS.
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
