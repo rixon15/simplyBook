@@ -19,6 +19,7 @@ use Livewire\Attributes\Layout;
 #[Layout('layouts.app')]
 class CustomerBooking extends Component
 {
+
     public Collection $services;
     public Collection $employees;
 
@@ -28,6 +29,9 @@ class CustomerBooking extends Component
     public ?string $selectedTime = null;
 
     public string $viewDate;
+
+    public bool $showSuccess = false;
+
 
     public function mount(): void
     {
@@ -56,6 +60,7 @@ class CustomerBooking extends Component
 
         $this->viewDate = $newDate->format('Y-m-d');
     }
+
     public function selectService(int $id): void
     {
         $this->selectedServiceId = $id;
@@ -140,35 +145,41 @@ class CustomerBooking extends Component
         return $slots;
     }
 
-    public function confirmAppointment(): Redirector | RedirectResponse
+    public function confirmAppointment()
     {
-        // 1. Force Login if they are a guest (since this is the landing page)
-        if (!Auth::check()) {
-            return redirect()->route('login');
+        try {
+            if (!Auth::check()) {
+                return redirect()->route('login');
+            }
+
+            $this->validate([
+                'selectedServiceId' => 'required|exists:services,id',
+                'selectedEmployeeId' => 'required|exists:users,id',
+                'selectedDate' => 'required|date',
+                'selectedTime' => 'required'
+            ]);
+
+            $service = Service::find($this->selectedServiceId);
+            $start = Carbon::parse($this->selectedDate . ' ' . $this->selectedTime);
+            $end = (clone $start)->addMinutes($service->duration);
+
+            Appointment::create([
+                'user_id' => Auth::id(),
+                'service_id' => $this->selectedServiceId,
+                'employee_id' => $this->selectedEmployeeId,
+                'start_time' => $start,
+                'end_time' => $end,
+                'status' => Appointment::STATUS_CONFIRMED
+            ]);
+
+            $this->showSuccess = true;
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            throw $e;
+        } catch (\Exception $exception) {
+            logger($exception->getMessage());
+            $this->dispatch('notify', ['message' => 'Something went wrong']); // Added missing semicolon
         }
-
-        $this->validate([
-            'selectedServiceId' => 'required|exists:services,id',
-            'selectedEmployeeId' => 'required|exists:users,id',
-            'selectedDate' => 'required|date',
-            'selectedTime' => 'required'
-        ]);
-
-        $service = Service::find($this->selectedServiceId);
-        $start = Carbon::parse($this->selectedDate . ' ' . $this->selectedTime);
-        $end = (clone $start)->addMinutes($service->duration);
-
-        Appointment::create([
-            'user_id' => Auth::id(),
-            'service_id' => $this->selectedServiceId,
-            'employee_id' => $this->selectedEmployeeId,
-            'start_time' => $start,
-            'end_time' => $end,
-            'status' => 'confirmed' // Keep it lowercase 'confirmed' to match migration
-        ]);
-
-        session()->flash('message', 'Appointment booked successfully.');
-        return redirect()->to('/bookings');
     }
 
     public function render(): View

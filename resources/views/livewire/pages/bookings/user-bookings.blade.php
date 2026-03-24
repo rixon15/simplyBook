@@ -179,15 +179,16 @@
                                     </div>
 
                                     <div class="grid grid-cols-2 md:flex md:items-center gap-3 md:gap-4 mt-6">
-                                        <button wire:click="cancelAppointment({{ $booking->id }})"
-                                                wire:confirm="Are you sure?"
-                                                class="w-full md:p-4 md:flex-1 bg-white border border-slate-200 rounded-xl py-3 md:py-3 text-sm font-bold text-[#4d5d73] hover:bg-rose-50 hover:text-rose-600 hover:border-rose-100 transition-all">
+
+
+                                        <button wire:click="confirmCancel({{ $booking->id }})"
+                                                class="flex-1 md:p-4 border border-slate-200 rounded-xl py-3 text-sm font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-all">
                                             Cancel
                                         </button>
-                                        <a href="{{ route('home') }}"
-                                           class="w-full md:flex-none md:px-6 flex items-center justify-center bg-[#eaf1ff] md:bg-transparent rounded-xl py-3 md:py-0 text-[#4a40e0] text-sm font-bold hover:underline transition-all">
+                                        <button wire:click="confirmReschedule({{ $booking->id }})"
+                                                class="w-full md:flex-none md:px-6 flex items-center justify-center bg-[#eaf1ff] md:bg-transparent rounded-xl py-3 md:py-0 text-[#4a40e0] text-sm font-bold hover:underline transition-all">
                                             Reschedule
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -302,4 +303,17 @@
             background: #94a3b8;
         }
     </style>
+
+    <x-cancel-booking-modal
+        wire:model="showCancelModal"
+        :appointment="$selectedAppointment"
+    />
+
+    <x-reschedule-modal
+        wire:model="showRescheduleModal"
+        :appointment="$rescheduleAppointment"
+        :viewDate="$rescheduleViewDate"
+        :selectedDate="$rescheduleDate"
+        :selectedTime="$rescheduleTime"
+        :slots="$this->rescheduleSlots()"  />
 </div>

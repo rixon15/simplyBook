@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Appointment extends Model
 {
+
+    const STATUS_CONFIRMED = 'confirmed';
+    const STATUS_CANCELLED = 'cancelled';
+
     // The whitelist of columns that can be saved via Appointment::create()
     protected $fillable = [
         'user_id',

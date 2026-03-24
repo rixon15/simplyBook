@@ -1,4 +1,9 @@
 <div class="min-h-screen bg-[#f4f6ff] font-['Inter',sans-serif] flex flex-col relative">
+
+    <div id="modal-container">
+        <x-success-booking-modal wire:model="showSuccess" />
+    </div>
+
     <main class="flex-grow w-full max-w-[1536px] mx-auto flex flex-col lg:flex-row relative pb-[160px] lg:pb-12 pt-8">
 
         <div class="w-full lg:w-[60%] p-6 lg:p-12 space-y-12">

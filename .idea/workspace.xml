@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89475c4a-a8bc-4769-9ea1-266c5aef56f9" name="Changes" comment="Initial setup of the project">
-      <change afterPath="$PROJECT_DIR$/resources/views/components/bottom-navbar.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/footer-main.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="89475c4a-a8bc-4769-9ea1-266c5aef56f9" name="Changes" comment="Auth + landing page + my bookings">
+      <change afterPath="$PROJECT_DIR$/resources/views/components/cancel-booking-modal.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/reschedule-modal.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/success-booking-modal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/packages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/providers.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/providers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Livewire/CustomerBooking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/CustomerBooking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Livewire/UserBookings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/UserBookings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Appointment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Appointment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/0001_01_01_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2026_03_24_094719_create_appointments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2026_03_24_094719_create_appointments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/bookings/user-bookings.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/bookings/user-bookings.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/landing/customer-booking.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/landing/customer-booking.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="feature/auth" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,7 +70,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "feature/auth",
+    "git-widget-placeholder": "main",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
     "vue.rearranger.settings.migration": "true"
@@ -110,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1774344420889</updated>
       <workItem from="1774344421970" duration="159000" />
-      <workItem from="1774344597302" duration="23705000" />
+      <workItem from="1774344597302" duration="29978000" />
     </task>
     <task id="LOCAL-00001" summary="Initial setup of the project">
       <option name="closed" value="true" />
@@ -120,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774345554899</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Auth + landing page + my bookings">
+      <option name="closed" value="true" />
+      <created>1774370494692</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774370494692</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,7 +124,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial setup of the project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial setup of the project" />
+    <MESSAGE value="Auth + landing page + my bookings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auth + landing page + my bookings" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
