@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Appointment;
 use App\Models\Schedule;
+use App\Notifications\AppNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,7 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use PhpParser\Builder;
+use PHPUnit\TextUI\Application;
 
 #[Layout('layouts.app')]
 class UserBookings extends Component
@@ -26,6 +28,8 @@ class UserBookings extends Component
     public string $rescheduleDate = '';
     public string $rescheduleViewDate = '';
     public ?string $rescheduleTime = null;
+
+    private string $TIME_FORMAT = 'M j @ g:i A';
 
     public function confirmReschedule(int $id): void
     {
@@ -120,18 +124,56 @@ class UserBookings extends Component
             'rescheduleTime' => 'required'
         ]);
 
+        $appointment = $this->rescheduleAppointment;
+        if (!$appointment) return;
+
+        $actor = Auth::user();
+
         $start = Carbon::parse($this->rescheduleDate . ' ' . $this->rescheduleTime);
         $end = (clone $start)->addMinutes($this->rescheduleAppointment->service->duration);
 
-        $this->rescheduleAppointment->update([
+        $oldTimeFormatted = $appointment->start_time->format($this->TIME_FORMAT);
+        $newTimeFormatted = $start->format($this->TIME_FORMAT);
+
+        $appointment->update([
             'start_time' => $start,
             'end_time' => $end,
         ]);
 
+        if ($actor->id === $appointment->user_id) {
+
+            // SCENARIO A: The CUSTOMER is rescheduling their own appointment
+
+            $actor->notify(new AppNotification(
+                'info',
+                'Reschedule Confirmed',
+                "You successfully moved your appointment to {$newTimeFormatted}."
+            ));
+
+            if ($appointment->employee) {
+                $appointment->employee->notify(new AppNotification(
+                    'info',
+                    'Client Rescheduled',
+                    "{$actor->name} moved their appointment from {$oldTimeFormatted} to {$newTimeFormatted}.}"
+                ));
+            }
+
+        } else {
+
+            if ($appointment->user) {
+                $appointment->user->notify(new AppNotification(
+                    'info',
+                    'Appointment Changed',
+                    "Your appointment was rescheduled to {$newTimeFormatted} by {$actor->name}}"
+                ));
+            }
+
+        }
+
         $this->showRescheduleModal = false;
         $this->rescheduleAppointment = null;
-
         unset($this->upcomingAppointments);
+
         $this->dispatch('notify', ['message' => 'Appointment rescheduled successfully.']);
     }
 
@@ -161,17 +203,65 @@ class UserBookings extends Component
 
     public function cancelAppointment(): void
     {
-        if ($this->selectedAppointment) {
-            $this->selectedAppointment->update(['status' => Appointment::STATUS_CANCELLED]);
 
-            $this->selectedAppointment = null;
-            $this->showCancelModal = false;
+        $appointment = $this->selectedAppointment;
 
-            unset($this->upcomingAppointments); // Clear the cache for upcoming appointments
-            unset($this->appointmentHistory); // Clear the cache for appointment history
-
-            $this->dispatch('notify', ['message' => 'Appointment cancelled successfully.']);
+        if (!$appointment) {
+            return;
         }
+
+        $actor = Auth::user();
+
+        $appointment->update(['status' => Appointment::STATUS_CANCELLED]);
+
+        if ($actor->id === $appointment->user_id) {
+
+            // SCENARIO A: The CUSTOMER is cancelling their own appointment
+
+            // 1. Send a receipt to the Customer
+            $actor->notify(new AppNotification(
+                'info',
+                'Cancellation Confimed',
+                'You successfully cancelled your appointment for ' . $appointment->start_time->format($this->TIME_FORMAT) . '.'
+            ));
+
+            // 2. Alert the Employee that their calendar opened up
+            if ($appointment->employee) {
+                $appointment->employee->notify(new AppNotification(
+                    'error',
+                    'Client Cancelled',
+                    $actor->name . ' cancelled their appointment for ' . $appointment->start_time->format($this->TIME_FORMAT) . '.'
+                ));
+            }
+
+        } else {
+
+            // SCENARIO B: An ADMIN or EMPLOYEE is cancelling the appointmen
+
+            // 1. Alert the Customer that their appointment was cancelled by staff
+            if ($appointment->user()) {
+                $appointment->user()->notify(new AppNotification(
+                    'error',
+                    'Appointment Cancelled',
+                    'Your appointment on ' . $appointment->start_time->format($this->TIME_FORMAT) . '.'
+                ));
+            }
+
+            // 2. (Optional) Audit trail for the Admin
+            $actor->notify(new AppNotification(
+                'info',
+                'Cancellation Proccessed',
+                'You cancelled the appointment for ' . $appointment->user->name . '.'
+            ));
+        }
+
+        $this->selectedAppointment = null;
+        $this->showCancelModal = false;
+
+        unset($this->upcomingAppointments); // Clear the cache for upcoming appointments
+        unset($this->appointmentHistory); // Clear the cache for appointment history
+
+        $this->dispatch('notify', ['message' => 'Appointment cancelled successfully.']);
     }
 
     public function confirmCancel($id): void

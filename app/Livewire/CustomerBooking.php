@@ -6,11 +6,13 @@ use App\Models\Appointment;
 use App\Models\Schedule;
 use App\Models\Service;
 use App\Models\User;
+use App\Notifications\AppNotification;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
@@ -174,12 +176,22 @@ class CustomerBooking extends Component
 
             $this->showSuccess = true;
 
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             throw $e;
         } catch (\Exception $exception) {
             logger($exception->getMessage());
             $this->dispatch('notify', ['message' => 'Something went wrong']); // Added missing semicolon
         }
+
+        Auth::user()->notify(new AppNotification(
+            'success',
+            'Booking Confirmed: ',
+            'Your ' . $service->name . ' with '
+            . User::find($this->selectedEmployeeId)->name
+            . ' on ' . Carbon::parse($this->selectedDate)->format('F j, Y')
+            . ' at ' . Carbon::parse($this->selectedTime)->format('h:i A')
+            . ' has been confirmed.'
+        ));
     }
 
     public function render(): View
