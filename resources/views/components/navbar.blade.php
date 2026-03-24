@@ -16,7 +16,7 @@
                         @endif
                     </a>
 
-                    <a href="#" class="h-full flex items-center px-3 text-[#4d5d73] font-medium hover:text-[#4a40e0] transition-colors">
+                    <a href="{{ route('profile') }}" class="h-full flex items-center px-3 text-[#4d5d73] font-medium hover:text-[#4a40e0] transition-colors">
                         Profile
                         @if(request()->routeIs('profile'))
                             <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#4a40e0]"></div>

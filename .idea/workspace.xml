@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89475c4a-a8bc-4769-9ea1-266c5aef56f9" name="Changes" comment="Auth + landing page + my bookings">
-      <change afterPath="$PROJECT_DIR$/resources/views/components/cancel-booking-modal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/reschedule-modal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/success-booking-modal.blade.php" afterDir="false" />
+    <list default="true" id="89475c4a-a8bc-4769-9ea1-266c5aef56f9" name="Changes" comment="Created modals relatede to bookings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livewire/CustomerBooking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/CustomerBooking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livewire/UserBookings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/UserBookings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Appointment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Appointment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2026_03_24_094719_create_appointments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2026_03_24_094719_create_appointments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/bookings/user-bookings.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/bookings/user-bookings.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/landing/customer-booking.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/landing/customer-booking.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/0001_01_01_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +21,9 @@
     <persistenceIdMap>
       <entry key="_/home/szilard-ivacsony/PhpstormProjects/simplyBook" value="3BNzfiqtmSfSTWiILXbHqMFksAU" />
     </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedChatMode">
+    <option name="chatModeId" value="Ask" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -72,12 +69,13 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "main",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/livewire/pages/profile" />
       <recent name="$PROJECT_DIR$/resources/views/livewire/pages/bookings" />
       <recent name="$PROJECT_DIR$/resources/views/livewire/pages/landing" />
     </key>
@@ -98,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1774344420889</updated>
       <workItem from="1774344421970" duration="159000" />
-      <workItem from="1774344597302" duration="29978000" />
+      <workItem from="1774344597302" duration="33967000" />
     </task>
     <task id="LOCAL-00001" summary="Initial setup of the project">
       <option name="closed" value="true" />
@@ -116,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774370494692</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Created modals relatede to bookings">
+      <option name="closed" value="true" />
+      <created>1774377019535</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1774377019535</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,7 +131,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial setup of the project" />
     <MESSAGE value="Auth + landing page + my bookings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Auth + landing page + my bookings" />
+    <MESSAGE value="Created modals relatede to bookings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created modals relatede to bookings" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

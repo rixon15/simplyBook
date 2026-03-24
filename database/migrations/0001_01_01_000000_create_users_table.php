@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string("name");
             $table->string("email")->unique();
             $table->string("password");
+            $table->string("phone")->nullable();
+            $table->boolean("email_notifications")->default(true);
+            $table->boolean("sms_notifications")->default(false);
             $table->enum("role", ["admin", "employee", "customer"])->default("customer");
             $table->rememberToken();
             $table->timestamps();

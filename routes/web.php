@@ -2,6 +2,7 @@
 
 use App\Livewire\CustomerBooking;
 use App\Livewire\UserBookings;
+use App\Livewire\UserProfile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', CustomerBooking::class)->name('home');
@@ -18,5 +19,7 @@ Route::get('/dashboard', function () {
 
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/profile', UserProfile::class)->name('profile')->middleware('auth');
 
 require __DIR__ . '/auth.php';
