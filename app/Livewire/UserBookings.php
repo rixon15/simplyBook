@@ -80,7 +80,11 @@ class UserBookings extends Component
         $date = Carbon::parse($this->rescheduleDate);
         $dayOfWeek = $date->dayOfWeek;
 
-        $workDay = Schedule::where('user_id', $employeeId)->where('day_of_week', $dayOfWeek)->first();
+        $schedule = Schedule::where('user_id', $employeeId)->where('day_of_week', $dayOfWeek)->first();
+
+        if (!$schedule) {
+            return [];
+        }
 
         $existingBookings = Appointment::where('employee_id', $employeeId)
             ->whereDate('start_time', $this->rescheduleDate)
@@ -89,8 +93,8 @@ class UserBookings extends Component
 
 
         $slots = [];
-        $start = Carbon::parse($workDay->start_time);
-        $end = Carbon::parse($workDay->end_time);
+        $start = Carbon::parse($schedule->start_time);
+        $end = Carbon::parse($schedule->end_time);
 
         while ($start < $end) {
             $potentialStart = Carbon::parse($this->rescheduleDate . ' ' . $start->format('H:i:s'));
@@ -102,7 +106,7 @@ class UserBookings extends Component
                 return $potentialStart->lt($bookingEnd) && $potentialEnd->gt($bookingStart);
             });
 
-            $isWithinShift = $potentialEnd <= Carbon::parse($this->rescheduleDate . ' ' . $workDay->end_time);
+            $isWithinShift = $potentialEnd <= Carbon::parse($this->rescheduleDate . ' ' . $schedule->end_time);
             $isPast = $potentialStart->isBefore(Carbon::now());
 
             $slots[] = [
