@@ -1,0 +1,68 @@
+<nav class="bg-[#f4f6ff] border-b border-slate-200/60 sticky top-0 z-50">
+    <div class="max-w-[1280px] mx-auto px-6 py-4 flex justify-between items-center">
+
+        <div class="flex items-center gap-10">
+            <a href="{{ route('home') }}" class="text-[#0f172a] text-[20px] font-black tracking-tight">
+                SimplyBook
+            </a>
+
+            @auth
+                <div class="hidden md:flex items-center gap-6 h-[34px]">
+                    <a href="{{ route('dashboard') }}"
+                       class="h-full flex items-center px-1 relative transition-colors {{ request()->routeIs('dashboard') ? 'text-[#4a40e0] font-semibold' : 'text-[#4d5d73] font-medium hover:text-[#4a40e0]' }}">
+                        Bookings
+                        @if(request()->routeIs('bookings'))
+                            <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#4a40e0]"></div>
+                        @endif
+                    </a>
+
+                    <a href="#" class="h-full flex items-center px-3 text-[#4d5d73] font-medium hover:text-[#4a40e0] transition-colors">
+                        Profile
+                        @if(request()->routeIs('profile'))
+                            <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#4a40e0]"></div>
+                        @endif
+                    </a>
+                </div>
+            @endauth
+        </div>
+
+        <div class="flex items-center gap-4">
+            @auth
+                <button class="p-2 text-[#4d5d73] hover:bg-white/50 rounded-full transition relative">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-rose-500 rounded-full border-2 border-[#f4f6ff]"></span>
+                </button>
+
+                <a href="{{ route('home') }}" class="hidden sm:flex bg-[#4a40e0] text-white px-5 py-2 rounded-[12px] font-semibold text-[16px] shadow-sm hover:bg-[#3d30d4] transition-all">
+                    Book New
+                </a>
+
+                <div class="relative group">
+                    <button class="w-10 h-10 rounded-full border-2 border-[#9795ff] p-[2px] overflow-hidden transition-transform active:scale-95">
+                        <img src="https://i.pravatar.cc/100?u={{ Auth::user()->email }}" alt="Avatar" class="w-full h-full rounded-full object-cover">
+                    </button>
+
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                        <div class="px-4 py-2 border-b border-slate-50">
+                            <p class="text-xs font-bold text-slate-900 truncate">{{ Auth::user()->name }}</p>
+                        </div>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="w-full text-left px-4 py-2 text-sm text-rose-600 font-semibold hover:bg-rose-50 transition">
+                                Log Out
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            @else
+                <a href="{{ route('login') }}" class="text-sm font-semibold text-[#4d5d73] hover:text-[#4a40e0] transition">Log in</a>
+                <a href="{{ route('register') }}" class="bg-[#4a40e0] text-white px-5 py-2.5 rounded-[12px] text-sm font-bold shadow-lg shadow-indigo-200/50 hover:bg-[#3d30d4] transition">
+                    Get Started
+                </a>
+            @endauth
+        </div>
+    </div>
+</nav>
