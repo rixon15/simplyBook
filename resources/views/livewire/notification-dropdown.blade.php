@@ -53,7 +53,7 @@ new class extends Component {
     <div x-show="open" style="display: none;">
         <div @click="open = false" class="fixed inset-0 z-40 backdrop-blur-[1px] bg-[#0f172a]/40"></div>
 
-        <div class="absolute right-0 mt-4 w-[390px] md:w-[448px] bg-white rounded-2xl shadow-[0px_20px_40px_-12px_rgba(32,48,68,0.15)] border border-[#9eaec7]/10 z-50 overflow-hidden flex flex-col max-h-[80vh]">
+        <div class="fixed inset-x-4 top-20 sm:absolute sm:inset-auto sm:right-0 sm:mt-4 sm:w-[390px] md:w-[448px] bg-white rounded-2xl shadow-[0px_20px_40px_-12px_rgba(32,48,68,0.15)] border border-[#9eaec7]/10 z-50 overflow-hidden flex flex-col max-h-[calc(100vh-6rem)] sm:max-h-[80vh]">
 
             <div class="flex items-center justify-between px-6 py-5 border-b border-[#eaf1ff]">
                 <h3 class="text-[18px] font-bold text-[#203044]">Notifications</h3>
