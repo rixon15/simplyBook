@@ -8,17 +8,13 @@ use App\Models\Service;
 use App\Models\User;
 use App\Notifications\AppNotification;
 use Carbon\Carbon;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Layout;
 
-#[Layout('layouts.app')]
 class CustomerBooking extends Component
 {
 

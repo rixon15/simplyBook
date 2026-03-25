@@ -2,14 +2,11 @@
 
 namespace App\Livewire;
 
-use App\Notifications\AppNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('layouts.app')]
 class UserProfile extends Component
 {
 

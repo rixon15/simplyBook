@@ -6,16 +6,11 @@ use App\Models\Appointment;
 use App\Models\Schedule;
 use App\Notifications\AppNotification;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
-use PhpParser\Builder;
-use PHPUnit\TextUI\Application;
 
-#[Layout('layouts.app')]
 class UserBookings extends Component
 {
 

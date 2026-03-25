@@ -23,7 +23,7 @@
                 <span class="text-[10px] uppercase tracking-wider mt-1 {{ request()->routeIs('bookings') ? 'text-[#4A40E0] font-black' : 'text-[#4D5D73] font-bold' }}">Bookings</span>
             </a>
 
-            <a href="#"
+            <a href="{{route('notifications')}}"
                class="flex flex-col items-center justify-center min-w-[80px] transition-all active:scale-95 py-2.5 px-5 rounded-[20px]
                {{ request()->routeIs('alerts') ? 'bg-[#eaf1ff]' : 'bg-transparent' }}">
                 <svg class="w-6 h-6 {{ request()->routeIs('alerts') ? 'text-[#4A40E0]' : 'text-[#4D5D73]' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="{{ request()->routeIs('alerts') ? '2.5' : '2' }}">

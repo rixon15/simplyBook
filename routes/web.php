@@ -1,15 +1,17 @@
 <?php
 
 use App\Livewire\CustomerBooking;
+use App\Livewire\Pages\Notifications\Notifications;
 use App\Livewire\UserBookings;
 use App\Livewire\UserProfile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', CustomerBooking::class)->name('home');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/bookings', UserBookings::class)->name('bookings');
-    Route::view('/profile', 'profile')->name('profile');
+    Route::get('/profile', UserProfile::class)->name('profile');
+    Route::get('/notifications', Notifications::class)->name('notifications');
 });
 
 Route::get('/dashboard', function () {
@@ -20,6 +22,5 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/profile', UserProfile::class)->name('profile')->middleware('auth');
 
 require __DIR__ . '/auth.php';
