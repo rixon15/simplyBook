@@ -116,7 +116,7 @@ new class extends Component {
             </div>
 
             <div class="p-4 border-t border-[#eaf1ff] text-center bg-white">
-                <a href="#" class="text-[14px] font-semibold text-[#4a40e0] hover:underline">
+                <a href="{{route('notifications')}}" class="text-[14px] font-semibold text-[#4a40e0] hover:underline">
                     View All Notifications
                 </a>
             </div>
