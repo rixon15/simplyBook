@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-[#f4f6ff] py-20 px-4 sm:px-6 lg:px-8 font-['Inter',sans-serif]">
+<div class="h-full bg-[#f4f6ff] py-20 px-4 sm:px-6 lg:px-8 font-['Inter',sans-serif]">
 
     <div class="max-w-[800px] mx-auto space-y-10">
 

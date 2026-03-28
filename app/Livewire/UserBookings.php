@@ -196,7 +196,7 @@ class UserBookings extends Component
             })
             ->with(['service', 'employee'])
             ->orderByDesc('start_time')
-            ->take(5) //Limit to 5 appointemnts for the dashboard
+            ->take(5) //Limit to 5 appointemnts for the admin
             ->get();
     }
 

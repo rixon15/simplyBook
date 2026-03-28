@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Route;
 
 class NotificationDropdown extends Component
 {
@@ -28,6 +29,19 @@ class NotificationDropdown extends Component
                 $notification->markAsRead();
             }
         }
+    }
+
+    public function decideRoute(): string
+    {
+        $user = Auth::user();
+
+        $routerName = match ($user->role) {
+            'admin' => 'admin.notifications',
+            'employee' => 'employee.notifications',
+            default => 'notifications',
+        };
+
+        return Route::has($routerName) ? route($routerName) : route('notifications');
     }
 
     public function render()

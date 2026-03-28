@@ -9,7 +9,7 @@
             @auth
                 <div class="hidden md:flex items-center gap-6 h-[34px]">
                     <a href="{{ route('bookings') }}"
-                       class="h-full flex items-center px-1 relative transition-colors {{ request()->routeIs('dashboard') ? 'text-[#4a40e0] font-semibold' : 'text-[#4d5d73] font-medium hover:text-[#4a40e0]' }}">
+                       class="h-full flex items-center px-1 relative transition-colors {{ request()->routeIs('admin') ? 'text-[#4a40e0] font-semibold' : 'text-[#4d5d73] font-medium hover:text-[#4a40e0]' }}">
                         Bookings
                         @if(request()->routeIs('bookings'))
                             <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#4a40e0]"></div>
@@ -17,7 +17,7 @@
                     </a>
 
                     <a href="{{ route('profile') }}"
-                       class="h-full flex items-center px-3 relative transition-colors" {{ request()->routeIs('dashboard') ? 'text-[#4a40e0] font-semibold' : 'text-[#4d5d73] font-medium hover:text-[#4a40e0]' }}>
+                       class="h-full flex items-center px-3 relative transition-colors" {{ request()->routeIs('admin') ? 'text-[#4a40e0] font-semibold' : 'text-[#4d5d73] font-medium hover:text-[#4a40e0]' }}>
                         Profile
                         @if(request()->routeIs('profile'))
                             <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-[#4a40e0]"></div>

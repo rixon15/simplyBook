@@ -32,6 +32,10 @@ class Notifications extends Component
     {
         $user = Auth::user();
 
+        $layout = (auth()->user()->role === 'admin' || auth()->user()->role === 'employee')
+            ? 'layouts.dashboard'
+            : 'layouts.app';
+
         if (!$user) {
             return view('livewire.pages.notifications.notifications', [
                 'groupedNotifications' => collect(),
@@ -52,6 +56,6 @@ class Notifications extends Component
             'groupedNotifications' => $grouped,
             'isEmpty' => $allNotifications->isEmpty(),
             'unreadCount' => $user->unreadNotifications()->count()
-        ]);
+        ])->layout($layout);
     }
 }

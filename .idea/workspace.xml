@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89475c4a-a8bc-4769-9ea1-266c5aef56f9" name="Changes" comment="Fixed reschedule bug involving weekends">
+    <list default="true" id="89475c4a-a8bc-4769-9ea1-266c5aef56f9" name="Changes" comment="Fixed underline bug in navbar at Profile">
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/EnsureUserIsAdmin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/EnsureUserIsCustomer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/EnsureUserIsEmployee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerifyEmailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerifyEmailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Livewire/NotificationDropdown.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/NotificationDropdown.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Livewire/Pages/Notifications/Notifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/Pages/Notifications/Notifications.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Livewire/UserBookings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/UserBookings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Livewire/UserProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/UserProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Appointment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Appointment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/notification-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/notification-dropdown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/notification-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/notification-dropdown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/auth/confirm-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/auth/confirm-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/auth/verify-email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/auth/verify-email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/notifications/notifications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/notifications/notifications.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/profile/user-profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/profile/user-profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Auth/AuthenticationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Auth/AuthenticationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Auth/EmailVerificationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Auth/EmailVerificationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Auth/PasswordConfirmationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Auth/PasswordConfirmationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/Auth/RegistrationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Auth/RegistrationTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,16 +212,17 @@
     "laravel_idea.dialogs.rename_blade_component_tags.x": "2613",
     "laravel_idea.dialogs.rename_blade_component_tags.y": "424",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/livewire/components" />
+      <recent name="$PROJECT_DIR$/resources/views/livewire/compoennts" />
       <recent name="$PROJECT_DIR$/resources/views/components" />
       <recent name="$PROJECT_DIR$/resources/views/livewire/pages/profile" />
       <recent name="$PROJECT_DIR$/resources/views/livewire/pages/bookings" />
-      <recent name="$PROJECT_DIR$/resources/views/livewire/pages/landing" />
     </key>
   </component>
   <component name="RunManager">
@@ -221,6 +249,7 @@
       <workItem from="1774344421970" duration="159000" />
       <workItem from="1774344597302" duration="33967000" />
       <workItem from="1774430086408" duration="4601000" />
+      <workItem from="1774700066279" duration="24276000" />
     </task>
     <task id="LOCAL-00001" summary="Initial setup of the project">
       <option name="closed" value="true" />
@@ -278,7 +307,23 @@
       <option name="project" value="LOCAL" />
       <updated>1774392089306</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Refactored the notification-dropdown component&#10;&#10;Moved the php part into its separate file&#10;Moved the blade template to the components directory">
+      <option name="closed" value="true" />
+      <created>1774450263583</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1774450263583</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed underline bug in navbar at Profile">
+      <option name="closed" value="true" />
+      <created>1774713465088</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1774713465088</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +337,9 @@
     <MESSAGE value="Fixed Appointment History status display" />
     <MESSAGE value="Fixed notification dropdown view on mobile devices" />
     <MESSAGE value="Fixed reschedule bug involving weekends" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed reschedule bug involving weekends" />
+    <MESSAGE value="Refactored the notification-dropdown component&#10;&#10;Moved the php part into its separate file&#10;Moved the blade template to the components directory" />
+    <MESSAGE value="Fixed underline bug in navbar at Profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed underline bug in navbar at Profile" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

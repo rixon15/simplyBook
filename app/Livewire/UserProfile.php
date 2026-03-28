@@ -33,6 +33,11 @@ class UserProfile extends Component
     {
         $user = Auth::user();
 
+        if ($user->role === 'employee') {
+            $this->dispatch('notify', ['message' => 'Identity fields are managed by administration.', 'type' => 'error']);
+            return;
+        }
+
         $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
@@ -60,8 +65,14 @@ class UserProfile extends Component
         $this->dispatch('notify', ['message' => 'Preferences saved!']);
     }
 
-    public function render(): View
+    public function render()
     {
-        return view('livewire.pages.profile.user-profile');
+        $layout = (auth()->user()->role === 'admin' || auth()->user()->role === 'employee')
+            ? 'layouts.dashboard'
+            : 'layouts.app';
+
+        return view('livewire.pages.profile.user-profile')
+            ->layout($layout);
+
     }
 }

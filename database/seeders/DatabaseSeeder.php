@@ -33,6 +33,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@test.com',
             'password' => Hash::make('password')
         ]);
+
+        // Create dymmy admin
+        User::create([
+            'name' => 'Admin Doe',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('password'),
+            'role' => 'admin'
+        ]);
+
         // 2. Create the Services Menu
         $services = [
             ['name' => 'Signature Haircut', 'duration' => 30, 'price' => 35.00],

@@ -26,7 +26,7 @@ class Appointment extends Model
         'end_time' => 'datetime',
     ];
 
-    // Since you are likely going to show these on the dashboard soon,
+    // Since you are likely going to show these on the admin soon,
     // let's add the relationships now:
     public function user(): BelongsTo { return $this->belongsTo(User::class); }
     public function employee(): BelongsTo { return $this->belongsTo(User::class, 'employee_id'); }
