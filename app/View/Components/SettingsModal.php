@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class mobile-search-modal extends Component
+class SettingsModal extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class mobile-search-modal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.mobile-search-modal');
+        return view('components.settings-modal');
     }
 }

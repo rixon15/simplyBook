@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->foreignId('employee_id')->constrained('users')->cascadeOnDelete();
             $table->dateTime('start_time');
             $table->dateTime('end_time');
-            $table->enum("status", ['pending', 'confirmed', 'cancelled'])->default('pending');
+            $table->enum("status", ['pending', 'confirmed', 'canceled', 'no_show', 'completed'])->default('pending');
             $table->timestamps();
         });
     }

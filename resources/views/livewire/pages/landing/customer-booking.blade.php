@@ -1,7 +1,9 @@
 <div class="min-h-screen bg-[#f4f6ff] font-['Inter',sans-serif] flex flex-col relative">
 
     <div id="modal-container">
-        <x-success-booking-modal wire:model="showSuccess" />
+        @if($lastBooking)
+            <x-success-booking-modal wire:model="showSuccess" :appointment="$lastBooking" />
+        @endif
     </div>
 
     <main class="flex-grow w-full max-w-[1536px] mx-auto flex flex-col lg:flex-row relative pb-[160px] lg:pb-12 pt-8">
@@ -35,7 +37,7 @@
                                     <p class="text-sm text-slate-500 max-w-[85%]">Professional treatment tailored to your styling needs.</p>
                                 </div>
                                 <span class="text-2xl font-black {{ $selectedServiceId == $service->id ? 'text-indigo-600' : 'text-slate-800' }}">
-                                    ${{ number_format($service->price, 0) }}
+                                    ${{ number_format($service->price, 2, '.', ',') }}
                                 </span>
                             </div>
 
@@ -171,7 +173,7 @@
                             </p>
                         </div>
                         <div class="text-3xl font-black text-slate-900">
-                            ${{ $selectedServiceId ? number_format($services->find($selectedServiceId)->price, 0) : '0' }}
+                            ${{ $selectedServiceId ? number_format($services->find($selectedServiceId)->price, 2, '.', ',') : '0' }}
                         </div>
                     </div>
 

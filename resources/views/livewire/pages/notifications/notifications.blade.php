@@ -100,10 +100,10 @@
 
                                         <div class="flex-1 min-w-0">
                                             <h4 class="text-[16px] font-bold text-[#203044] mb-1">
-                                                {{ $notification->data['title'] }}
+                                                {{ $notification->data['title'] ?? ($notification->data['user'] . ' ' . ($notification->data['action'] ?? 'updated')) }}
                                             </h4>
                                             <p class="text-[14px] text-[#4d5d73] leading-relaxed">
-                                                {{ $notification->data['message'] }}
+                                                {{ $notification->data['message'] ?? ($notification->data['subject'] ?? 'New activity recorded') }}
                                             </p>
                                         </div>
 

@@ -27,10 +27,17 @@
             <div class="max-w-[1400px] mx-auto">
                 {{ $slot }}
             </div>
+
+            <x-need-help-section/>
+
         </main>
 
     </div>
+
+
 </div>
+
+
 
 <x-mobile-menu-modal />
 <x-mobile-search-modal />

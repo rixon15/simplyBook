@@ -1,10 +1,10 @@
-<div class="h-full bg-[#f4f6ff] font-['Inter',sans-serif] flex flex-col relative pb-[120px] md:pb-12">
+<div class="h-full bg-[#f4f6ff] font-['Inter',sans-serif] flex flex-col relative pb-[120px] md:pb-12 mx-auto">
     <div class="hidden md:block max-w-[1536px] mx-auto w-full px-8 py-8">
         <h1 class="text-3xl font-extrabold text-[#203044] tracking-tight">Personal Information</h1>
         <p class="text-[#4d5d73] mt-2">Update your personal details and contact information.</p>
     </div>
 
-    <main class="flex-grow w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12 md:space-y-16 pt-6 md:pt-0">
+    <main class="flex-grow w-full max-w-[1280px] mx-auto space-y-12 md:space-y-16 pt-6 md:pt-0">
 
         <section class="space-y-6">
             <div class="bg-white rounded-3xl shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] p-6 md:p-8">

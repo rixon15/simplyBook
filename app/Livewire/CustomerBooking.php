@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use AllowDynamicProperties;
+use App\Enums\AppointmentStatus;
 use App\Models\Appointment;
 use App\Models\Schedule;
 use App\Models\Service;
@@ -15,6 +17,7 @@ use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
 
+#[AllowDynamicProperties]
 class CustomerBooking extends Component
 {
 
@@ -30,6 +33,7 @@ class CustomerBooking extends Component
 
     public bool $showSuccess = false;
 
+    public ?Appointment $lastBooking = null;
 
     public function mount(): void
     {
@@ -161,13 +165,13 @@ class CustomerBooking extends Component
             $start = Carbon::parse($this->selectedDate . ' ' . $this->selectedTime);
             $end = (clone $start)->addMinutes($service->duration);
 
-            Appointment::create([
+            $this->lastBooking = Appointment::create([
                 'user_id' => Auth::id(),
                 'service_id' => $this->selectedServiceId,
                 'employee_id' => $this->selectedEmployeeId,
                 'start_time' => $start,
                 'end_time' => $end,
-                'status' => Appointment::STATUS_CONFIRMED
+                'status' => AppointmentStatus::CONFIRMED
             ]);
 
             $this->showSuccess = true;

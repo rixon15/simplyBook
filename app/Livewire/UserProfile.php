@@ -14,19 +14,12 @@ class UserProfile extends Component
     public string $email = '';
     public string $phone = '';
 
-    public bool $emailNotifications = true;
-    public bool $smsNotifications = false;
-
     public function mount()
     {
         $user = Auth::user();
         $this->name = $user->name;
         $this->email = $user->email;
         $this->phone = $user->phone ?? '';
-
-
-        $this->emailNotifications = $user->email_notifications;
-        $this->smsNotifications = $user->sms_notifications;
     }
 
     public function saveProfile(): void
@@ -51,18 +44,6 @@ class UserProfile extends Component
         ]);
 
         $this->dispatch('notify', ['message' => 'Profile updated successfully']);
-    }
-
-    public function savePreferences(): void
-    {
-        $user = Auth::user();
-
-        $user->update([
-            'email_notifications' => $this->emailNotifications,
-            'sms_notifications' => $this->smsNotifications,
-        ]);
-
-        $this->dispatch('notify', ['message' => 'Preferences saved!']);
     }
 
     public function render()

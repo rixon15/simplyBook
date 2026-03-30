@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class settings-modal extends Component
+class MobileMenuModal extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class settings-modal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.settings-modal');
+        return view('components.mobile-menu-modal');
     }
 }

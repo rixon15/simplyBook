@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Enums\AppointmentStatus;
 use App\Models\Appointment;
 use App\Models\Schedule;
 use App\Notifications\AppNotification;
@@ -181,7 +182,7 @@ class UserBookings extends Component
     {
         return Appointment::where('user_id', Auth::id())
             ->where('start_time', '>=', Carbon::now())
-            ->where('status', Appointment::STATUS_CONFIRMED)
+            ->where('status', AppointmentStatus::CONFIRMED)
             ->with(['service', 'employee'])
             ->get();
     }
@@ -192,7 +193,7 @@ class UserBookings extends Component
         return Appointment::where('user_id', Auth::id())
             ->where(function ($query) {
                 $query->where('start_time', '<', Carbon::now())
-                    ->orWhere('status', Appointment::STATUS_CANCELLED);
+                    ->orWhere('status', AppointmentStatus::CANCELED);
             })
             ->with(['service', 'employee'])
             ->orderByDesc('start_time')

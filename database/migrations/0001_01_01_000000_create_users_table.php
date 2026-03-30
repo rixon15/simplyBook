@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("email")->unique();
             $table->string("password");
             $table->string("phone")->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->boolean("email_notifications")->default(true);
             $table->boolean("sms_notifications")->default(false);
             $table->enum("role", ["admin", "employee", "customer"])->default("customer");

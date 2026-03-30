@@ -1,7 +1,10 @@
 <div x-data="{ open: false }" @click.outside="open = false" class="relative z-50" wire:poll.10s>
 
     <button @click="open = !open" class="relative p-2 text-[#4d5d73] hover:bg-[#eaf1ff] rounded-xl transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+        </svg>
 
         @if($notifications->count() > 0)
             <span class="absolute top-1.5 right-2 block h-2.5 w-2.5 rounded-full bg-[#4a40e0] ring-2 ring-white"></span>
@@ -67,13 +70,16 @@
 
                         <div class="flex-1">
                             <div class="flex justify-between items-start">
-                                <p class="text-[16px] font-semibold text-[#203044]">{{ $notification->data['title'] }}</p>
-                                <span class="text-[11px] uppercase tracking-wider text-[#4d5d73]">
-                                    {{ $notification->created_at->diffForHumans(null, true, true) }} ago
-                                </span>
+                                {{-- Handle both 'title' or 'user + action' format --}}
+                                <p class="text-[16px] font-semibold text-[#203044]">
+                                    {{ $notification->data['title'] ?? ($notification->data['user'] . ' ' . ($notification->data['action'] ?? 'updated')) }}
+                                </p>
+                                <span class="text-[11px] uppercase tracking-wider text-[#4d5d73]"> {{ $notification->created_at->diffForHumans(null, true, true) }} ago </span>
                             </div>
+
+                            {{-- Handle both 'message' or 'subject' format --}}
                             <p class="text-[16px] text-[#4d5d73] leading-snug mt-0.5">
-                                {{ $notification->data['message'] }}
+                                {{ $notification->data['message'] ?? ($notification->data['subject'] ?? 'New activity recorded') }}
                             </p>
                         </div>
                     </div>

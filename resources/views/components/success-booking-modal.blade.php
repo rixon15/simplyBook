@@ -1,11 +1,7 @@
+@props(['appointment'])
+
 <x-modal {{ $attributes }}>
     <div x-data="{ timer: null }"
-{{--         x-init="$watch('show', value => {--}}
-{{--            if(value) {--}}
-{{--                // Wait 5 seconds, then go to bookings--}}
-{{--                setTimeout(() => window.location.href = '/bookings', 2500);--}}
-{{--            }--}}
-{{--         })"--}}
          class="bg-[#f4f6ff] rounded-[32px] p-8 flex flex-col items-center">
 
         <div class="mb-8 text-center">
@@ -31,11 +27,11 @@
                 <div class="space-y-4">
                     <div>
                         <label class="text-[11px] font-bold uppercase text-[#4d5d73]">Service</label>
-                        <p class="font-semibold text-[#203044]">Signature Haircut</p>
+                        <p class="font-semibold text-[#203044]">{{$appointment->service->name}}</p>
                     </div>
                     <div>
                         <label class="text-[11px] font-bold uppercase text-[#4d5d73]">Specialist</label>
-                        <p class="font-semibold text-[#203044]">James</p>
+                        <p class="font-semibold text-[#203044]">{{$appointment->employee->name}}</p>
                     </div>
                     <div>
                         <label class="text-[11px] font-bold uppercase text-[#4d5d73]">Location</label>
@@ -55,7 +51,7 @@
 
             <div class="bg-[#eaf1ff] p-8 flex justify-between items-center">
                 <span class="font-bold text-[#4d5d73]">Total Paid</span>
-                <span class="text-3xl font-black text-[#203044]">$50.00</span>
+                <span class="text-3xl font-black text-[#203044]">${{number_format($appointment->service->price, 2, '.', ',')}}</span>
             </div>
         </div>
 
