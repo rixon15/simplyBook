@@ -37,6 +37,27 @@ class DatabaseSeeder extends Seeder
             'role' => 'employee',
         ]);
 
+        $employee3 = User::create([
+            'name' => 'Novius L.',
+            'email' => 'novius@simplybook.test',
+            'password' => Hash::make('password'),
+            'role' => 'employee',
+        ]);
+
+        $employee4 = User::create([
+            'name' => 'Peter L.',
+            'email' => 'peters@simplybook.test',
+            'password' => Hash::make('password'),
+            'role' => 'employee',
+        ]);
+
+        $employee4 = User::create([
+            'name' => 'Peter L.',
+            'email' => 'peters@simplybook.test',
+            'password' => Hash::make('password'),
+            'role' => 'employee',
+        ]);
+
         // Create 20 random customers for the database
         $customers = User::factory(20)->create(['role' => 'customer']);
 
@@ -65,7 +86,7 @@ class DatabaseSeeder extends Seeder
 
         // --- 3. SCHEDULES ---
 
-        $employees = [$employee1, $employee2];
+        $employees = [$employee1, $employee2, $employee3, $employee4];
         foreach ($employees as $emp) {
             for ($day = 1; $day <= 5; $day++) {
                 Schedule::create([
@@ -80,7 +101,7 @@ class DatabaseSeeder extends Seeder
         // --- 4. APPOINTMENTS (The Dashboard Meat) ---
 
         // A. Past Appointments (for KPI Trends)
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             Appointment::create([
                 'user_id' => $customers->random()->id,
                 'service_id' => $serviceModels->random()->id,
@@ -92,7 +113,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // B. Today's Appointments (for "Today's Schedule")
-        $todayTimes = ['09:00', '10:30', '12:15', '14:00', '15:30'];
+        $todayTimes = ['09:00', '10:30', '13:00', '14:30', '16:00'];
         foreach ($todayTimes as $index => $time) {
             $status = ($index == 1) ? 'pending' : 'confirmed'; // Make one pending for variety
 

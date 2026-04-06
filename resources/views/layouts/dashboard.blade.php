@@ -16,12 +16,12 @@
 <div class="flex h-screen overflow-hidden">
 
     <aside class="hidden lg:block w-[256px] h-full shrink-0 border-r border-gray-100 bg-white overflow-y-auto">
-        <x-sidebar />
+        <x-sidebar/>
     </aside>
 
     <div class="flex flex-col flex-1 min-w-0 h-full relative">
 
-        <livewire:components.x-admin-navbar />
+        <livewire:components.x-admin-navbar/>
 
         <main class="flex-1 overflow-y-auto p-[32px]">
             <div class="max-w-[1400px] mx-auto">
@@ -38,9 +38,8 @@
 </div>
 
 
-
-<x-mobile-menu-modal />
-<x-mobile-search-modal />
-
+<x-mobile-menu-modal/>
+<x-mobile-search-modal/>
+<livewire:components.admin-create-appointment-modal/>
 </body>
 </html>

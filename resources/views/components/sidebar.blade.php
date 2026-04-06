@@ -83,10 +83,11 @@
     </div>
 
     <div class="px-[24px] mt-8">
-        <button class="bg-gradient-to-r from-[#4a40e0] to-[#3d30d4] relative rounded-[12px] shadow-sm w-full py-[12px] px-[16px] hover:opacity-90 transition-opacity flex items-center justify-center">
-            <span class="font-['Inter'] font-semibold text-[14px] text-white">
-                + New Appointment
-            </span>
+        <button x-data @click="$dispatch('open-create-appointment-modal')"
+                class="bg-gradient-to-r from-[#4a40e0] to-[#3d30d4] relative rounded-[12px] shadow-sm w-full py-[12px] px-[16px] hover:opacity-90 transition-opacity flex items-center justify-center">
+        <span class="font-['Inter'] font-semibold text-[14px] text-white">
+            + New Appointment
+        </span>
         </button>
     </div>
 
