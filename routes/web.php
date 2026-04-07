@@ -6,7 +6,6 @@ use App\Http\Middleware\EnsureUserIsEmployee;
 use App\Livewire\CustomerBooking;
 use App\Livewire\Pages\Admin\Appointments;
 use App\Livewire\Pages\Admin\Dashboard as AdminDashboard;
-use App\Livewire\Pages\Admin\Payments;
 use App\Livewire\Pages\Admin\Services;
 use App\Livewire\Pages\Admin\Staff;
 use App\Livewire\Pages\EmployeeDashboard\Dashboard as EmployeeDashboard;
@@ -34,7 +33,6 @@ Route::middleware(['auth', 'verified', EnsureUserIsCustomer::class])->group(func
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', EnsureUserIsAdmin::class])->group(function () {
     Route::get('services', Services::class)->name('services');
     Route::get('staff', Staff::class)->name('staff');
-    Route::get('payments', Payments::class)->name('payments');
     Route::get('profile', UserProfile::class)->name('profile');
     Route::get('notifications', Notifications::class)->name('notifications');
 });
