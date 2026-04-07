@@ -17,10 +17,19 @@ return new class extends Migration
             $table->string("email")->unique();
             $table->string("password");
             $table->string("phone")->nullable();
+
+            $table->string("title")->nullable();
+            $table->string("profile_photo_path", 2048)->nullable();
+            $table->string("status")->default("active");
+            $table->string("working_days")->nullable();
+            $table->string("working_hours")->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean("email_notifications")->default(true);
             $table->boolean("sms_notifications")->default(false);
             $table->enum("role", ["admin", "employee", "customer"])->default("customer");
+
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -38,6 +47,7 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+            $table->softDeletes();
         });
     }
 

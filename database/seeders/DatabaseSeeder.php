@@ -23,45 +23,79 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin'
         ]);
 
+        // Employee 1: John (Active)
         $employee1 = User::create([
             'name' => 'John The Barber',
             'email' => 'john@simplybook.test',
             'password' => Hash::make('password'),
             'role' => 'employee',
+            'title' => 'Master Barber',
+            'status' => 'active',
+            'working_days' => 'Mon - Fri',
+            'working_hours' => '09:00 - 17:00'
         ]);
 
+        // Employee 2: Marcus (Active)
         $employee2 = User::create([
             'name' => 'Marcus L.',
             'email' => 'marcus@simplybook.test',
             'password' => Hash::make('password'),
             'role' => 'employee',
+            'title' => 'Senior Stylist',
+            'status' => 'active',
+            'working_days' => 'Mon - Fri',
+            'working_hours' => '09:00 - 17:00'
         ]);
 
+        // Employee 3: Novius (On Leave)
         $employee3 = User::create([
             'name' => 'Novius L.',
             'email' => 'novius@simplybook.test',
             'password' => Hash::make('password'),
             'role' => 'employee',
+            'title' => 'Junior Barber',
+            'status' => 'leave',
+            'working_days' => 'Tue - Sat',
+            'working_hours' => '10:00 - 18:00'
         ]);
 
+        // Employee 4: Peter (Off Duty)
         $employee4 = User::create([
             'name' => 'Peter L.',
             'email' => 'peters@simplybook.test',
             'password' => Hash::make('password'),
             'role' => 'employee',
+            'title' => 'Color Specialist',
+            'status' => 'off',
+            'working_days' => 'Wed - Sun',
+            'working_hours' => '08:00 - 16:00'
         ]);
 
-        $employee4 = User::create([
-            'name' => 'Peter L.',
-            'email' => 'peters@simplybook.test',
+        // Employee 5: Simon (Active)
+        $employee5 = User::create([
+            'name' => 'Simon L.',
+            'email' => 'simon@simplybook.test',
             'password' => Hash::make('password'),
             'role' => 'employee',
+            'title' => 'Stylist',
+            'status' => 'active',
+            'working_days' => 'Mon - Fri',
+            'working_hours' => '09:00 - 17:00'
         ]);
 
-        // Create 20 random customers for the database
+        // CREATE ONE SOFT-DELETED EMPLOYEE (For testing your archived logic)
+        User::create([
+            'name' => 'Old Staff Member',
+            'email' => 'old@simplybook.test',
+            'password' => Hash::make('password'),
+            'role' => 'employee',
+            'title' => 'Retired Barber',
+            'deleted_at' => now(), // This makes them "Soft Deleted"
+        ]);
+
+        // Create 20 random customers
         $customers = User::factory(20)->create(['role' => 'customer']);
 
-        // Add your specific test customer
         $testCustomer = User::create([
             'name' => 'Jane Doe',
             'email' => 'test@test.com',
@@ -69,14 +103,14 @@ class DatabaseSeeder extends Seeder
             'role' => 'customer'
         ]);
 
-        // --- 2. SERVICES ---
+        // --- 2. SERVICES (Adding descriptions to match your new UI) ---
 
         $services = [
-            ['name' => 'Signature Haircut', 'duration' => 30, 'price' => 35.00],
-            ['name' => 'Beard Trim & Shape', 'duration' => 15, 'price' => 15.00],
-            ['name' => 'Haircut & Beard Combo', 'duration' => 45, 'price' => 45.00],
-            ['name' => 'Luxury Hot Towel Shave', 'duration' => 30, 'price' => 40.00],
-            ['name' => 'Coloring', 'duration' => 60, 'price' => 75.00],
+            ['name' => 'Signature Haircut', 'description' => 'Precision cut with styling.', 'duration' => 30, 'price' => 35.00],
+            ['name' => 'Beard Trim & Shape', 'description' => 'Professional sculpting and hot towel.', 'duration' => 15, 'price' => 15.00],
+            ['name' => 'Haircut & Beard Combo', 'description' => 'The full works.', 'duration' => 45, 'price' => 45.00],
+            ['name' => 'Luxury Hot Towel Shave', 'description' => 'Traditional straight razor shave.', 'duration' => 30, 'price' => 40.00],
+            ['name' => 'Coloring', 'description' => 'Full head permanent color.', 'duration' => 60, 'price' => 75.00],
         ];
 
         $serviceModels = collect();
@@ -84,9 +118,9 @@ class DatabaseSeeder extends Seeder
             $serviceModels->push(Service::create($s));
         }
 
-        // --- 3. SCHEDULES ---
+        // --- 3. SCHEDULES (Keeping your existing logic) ---
 
-        $employees = [$employee1, $employee2, $employee3, $employee4];
+        $employees = [$employee1, $employee2, $employee3, $employee4, $employee5];
         foreach ($employees as $emp) {
             for ($day = 1; $day <= 5; $day++) {
                 Schedule::create([
@@ -98,25 +132,26 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // --- 4. APPOINTMENTS (The Dashboard Meat) ---
+        // --- 4. APPOINTMENTS ---
 
-        // A. Past Appointments (for KPI Trends)
+        // Past Appointments
         for ($i = 1; $i <= 20; $i++) {
+            $start = Carbon::yesterday()->setHour(rand(9, 15))->setMinute(0);
+            $service = $serviceModels->random();
+
             Appointment::create([
                 'user_id' => $customers->random()->id,
-                'service_id' => $serviceModels->random()->id,
+                'service_id' => $service->id,
                 'employee_id' => collect($employees)->random()->id,
-                'start_time' => Carbon::yesterday()->setHour(rand(9, 16)),
-                'end_time' => Carbon::yesterday()->setHour(17),
-                'status' => 'confirmed'
+                'start_time' => $start,
+                'end_time' => (clone $start)->addMinutes($service->duration),
+                'status' => 'completed'
             ]);
         }
 
-        // B. Today's Appointments (for "Today's Schedule")
+        // Today's Appointments
         $todayTimes = ['09:00', '10:30', '13:00', '14:30', '16:00'];
         foreach ($todayTimes as $index => $time) {
-            $status = ($index == 1) ? 'pending' : 'confirmed'; // Make one pending for variety
-
             $start = Carbon::today()->setTimeFromTimeString($time);
             $service = $serviceModels->random();
 
@@ -126,20 +161,17 @@ class DatabaseSeeder extends Seeder
                 'employee_id' => collect($employees)->random()->id,
                 'start_time' => $start,
                 'end_time' => (clone $start)->addMinutes($service->duration),
-                'status' => $status
+                'status' => ($index == 1) ? 'pending' : 'confirmed'
             ]);
         }
 
-        // C. Recent Activity Feed (Create notifications manually if you don't have the logic yet)
-        // This assumes you have the 'notifications' table setup
-        // Inside DatabaseSeeder.php
-        // Inside DatabaseSeeder.php
+        // Notifications
         foreach ($customers->take(3) as $customer) {
             $admin->notifications()->create([
                 'id' => \Illuminate\Support\Str::uuid(),
                 'type' => 'App\Notifications\AppNotification',
                 'data' => [
-                    'type' => 'booking', // Change 'success' to 'booking'
+                    'type' => 'booking',
                     'user' => $customer->name,
                     'action' => 'booked a',
                     'subject' => 'Signature Haircut',
@@ -151,4 +183,5 @@ class DatabaseSeeder extends Seeder
             ]);
         }
     }
+
 }

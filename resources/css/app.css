@@ -11,3 +11,21 @@
         scrollbar-width: none;
     }
 }
+
+/* Hide the clock icon in Chrome/Safari */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+/* Hide arrows in Chrome/Safari/Edge */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide arrows in Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

@@ -7,15 +7,29 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password', 'phone', 'email_notifications', 'sms_notifications', 'role'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+    use SoftDeletes;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'phone',
+        'title',
+        'profile_photo_path',
+        'status',
+        'working_days',
+        'working_hours',
+        'role',
+    ];
 
     const ROLE_ADMIN = 'admin';
     const ROLE_EMPLOYEE = 'employee';

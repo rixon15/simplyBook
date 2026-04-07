@@ -8,7 +8,9 @@ class Service extends Model
 {
     protected $fillable = [
         'name',
+        'description', // <--- ADD THIS LINE
         'duration',
         'price',
+        'is_active',
     ];
 }
