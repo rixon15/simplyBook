@@ -86,10 +86,6 @@
                     <span class="font-['Nimbus_Sans'] text-[14px] text-[#475569]">Staff</span>
                 </a>
 
-                <div class="w-full h-px bg-[#e2e8f0] my-[16px]"></div> <a href="{{ route('admin.payments') }}" wire:navigate @click="open = false" class="relative flex items-center gap-[16px] px-[16px] py-[12px] rounded-[16px] hover:bg-gray-100">
-                    <svg class="w-5 h-5 text-[#475569]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                    <span class="font-['Nimbus_Sans'] text-[14px] text-[#475569]">Payments</span>
-                </a>
             @endif
         </nav>
 

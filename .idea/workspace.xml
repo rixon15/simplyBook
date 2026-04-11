@@ -1,40 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89475c4a-a8bc-4769-9ea1-266c5aef56f9" name="Changes" comment="WIP admin dashboard">
-      <change afterPath="$PROJECT_DIR$/app/Enums/AppointmentStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="89475c4a-a8bc-4769-9ea1-266c5aef56f9" name="Changes" comment="Removed the payments tab">
+      <change beforePath="$PROJECT_DIR$/.idea/simplyBook.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/simplyBook.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AGENTS.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livewire/Components/RecentActivityFeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/Components/RecentActivityFeed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livewire/Components/TodaysSchedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/Components/TodaysSchedule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livewire/CustomerBooking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/CustomerBooking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livewire/Pages/Admin/Appointments.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/Pages/Admin/Appointments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livewire/Pages/Admin/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/Pages/Admin/Dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livewire/UserBookings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/UserBookings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livewire/UserProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livewire/UserProfile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Appointment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Appointment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/Components/mobile-menu-modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/MobileMenuModal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/Components/mobile-search-modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/MobileSearchModal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/Components/settings-modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/SettingsModal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/0001_01_01_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2026_03_24_094719_create_appointments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2026_03_24_094719_create_appointments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/kpi-card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/kpi-card.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/notification-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/notification-dropdown.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/settings-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/settings-modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/success-booking-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/success-booking-modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/components/recent-activity-feed.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/components/recent-activity-feed.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/components/todays-schedule.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/components/todays-schedule.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/landing/customer-booking.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/landing/customer-booking.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/notifications/notifications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/notifications/notifications.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/profile/user-profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/profile/user-profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,6 +180,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "laravel_idea.dialogs.rename_blade_component_tags.width": "534",
     "laravel_idea.dialogs.rename_blade_component_tags.x": "2613",
@@ -238,8 +209,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PS-253.29346.257" />
-        <option value="bundled-php-predefined-a98d8de5180a-0e0d91225499-com.jetbrains.php.sharedIndexes-PS-253.29346.257" />
+        <option value="bundled-js-predefined-d6986cc7102b-3bd3a6803838-JavaScript-PS-261.22158.283" />
+        <option value="bundled-php-predefined-a98d8de5180a-a9a4ea3ee0f4-com.jetbrains.php.sharedIndexes-PS-261.22158.283" />
       </set>
     </attachedChunks>
   </component>
@@ -254,7 +225,11 @@
       <workItem from="1774344597302" duration="33967000" />
       <workItem from="1774430086408" duration="4601000" />
       <workItem from="1774700066279" duration="46026000" />
-      <workItem from="1774885958178" duration="7776000" />
+      <workItem from="1774885958178" duration="8053000" />
+      <workItem from="1775458378754" duration="83000" />
+      <workItem from="1775458482648" duration="24258000" />
+      <workItem from="1775542502625" duration="3388000" />
+      <workItem from="1775923334768" duration="2758000" />
     </task>
     <task id="LOCAL-00001" summary="Initial setup of the project">
       <option name="closed" value="true" />
@@ -336,7 +311,47 @@
       <option name="project" value="LOCAL" />
       <updated>1774733682678</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="WIP admin dashboard">
+      <option name="closed" value="true" />
+      <created>1774895116802</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1774895116802</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Merge remote-tracking branch 'origin/main'">
+      <option name="closed" value="true" />
+      <created>1774895147249</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1774895147249</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Appointments pus create appointment modal">
+      <option name="closed" value="true" />
+      <created>1775475686085</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1775475686085</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Staff plus services pages">
+      <option name="closed" value="true" />
+      <created>1775544849748</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1775544849748</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Removed the payments tab">
+      <option name="closed" value="true" />
+      <created>1775561125824</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1775561125824</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +368,11 @@
     <MESSAGE value="Refactored the notification-dropdown component&#10;&#10;Moved the php part into its separate file&#10;Moved the blade template to the components directory" />
     <MESSAGE value="Fixed underline bug in navbar at Profile" />
     <MESSAGE value="WIP admin dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP admin dashboard" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
+    <MESSAGE value="Appointments pus create appointment modal" />
+    <MESSAGE value="Staff plus services pages" />
+    <MESSAGE value="Removed the payments tab" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed the payments tab" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
